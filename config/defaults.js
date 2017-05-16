@@ -64,7 +64,7 @@ define({
     "enableGoogleplus": true,
     "enablePortalLogin": false,
 
-    "facebookAppId": "1659340331040775",
+    "facebookAppId": "1202596886532414",
 
     "twitterSigninUrl": location.protocol + "//utility.arcgis.com/tproxy/signin",
     "twitterUserUrl": location.protocol + "//utility.arcgis.com/tproxy/proxy/1.1/account/verify_credentials.json?q=&include_entities=true&skip_status=true&locale=en",
@@ -96,7 +96,7 @@ define({
     "enableFeatureEdit": false,
     "enableFeatureDelete" : false,
     "reportedByField": "Creator",
-    "locationField": "LONG_TEXT",
+    "locationField": "Location",
     "showMapFirst":"list",
     "showHelpOnLoad": false,
 
