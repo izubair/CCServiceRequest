@@ -263,7 +263,7 @@ define([
         getItemTitle: function (item) {
 						// IZ edits
 						var title = item.originalFeature.getTitle ? item.originalFeature.getTitle() : "";
-						title = item.originalFeature.attributes.Description + " - " + (new Date(item.originalFeature.attributes.CreationDate)).toDateString();
+						title = item.originalFeature.attributes.Description + " - " + (new Date(item.originalFeature.attributes.CreationDate)).toLocaleString();
 						return title;
             //return item.originalFeature.getTitle ? item.originalFeature.getTitle() : "";
         },

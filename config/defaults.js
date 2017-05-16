@@ -50,8 +50,8 @@ define({
   },
       //color theme.
     "theme": "#137DB9",
-    "applicationName": "",
-    "applicationIcon": "",
+    "applicationName": "Clark County Citizen Connect",
+    "applicationIcon": "/images/favicon.ico",
     "applicationFavicon": "/images/favicon.ico",
 
     "signInSubtitle": "",
@@ -59,18 +59,18 @@ define({
 
     "searchedAddressPushpinImage":"/images/redstickpin.png",
     "enableGuestAccess": true,
-    "enableFacebook": false,
-    "enableTwitter": false,
-    "enableGoogleplus": false,
-    "enablePortalLogin": true,
+    "enableFacebook": true,
+    "enableTwitter": true,
+    "enableGoogleplus": true,
+    "enablePortalLogin": false,
 
-    "facebookAppId": "",
+    "facebookAppId": "1659340331040775",
 
     "twitterSigninUrl": location.protocol + "//utility.arcgis.com/tproxy/signin",
     "twitterUserUrl": location.protocol + "//utility.arcgis.com/tproxy/proxy/1.1/account/verify_credentials.json?q=&include_entities=true&skip_status=true&locale=en",
     "twitterCallbackUrl": "/oauth-callback-twitter.html",
 
-    "googleplusClientId": "",
+    "googleplusClientId": "757514001398-87aqn9hkmumimkogmhdj18ucatfeahft.apps.googleusercontent.com",
     "googleplusScope": "https://www.googleapis.com/auth/userinfo.email",
 
     "showNullValueAs": "",
