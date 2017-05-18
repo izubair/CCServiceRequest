@@ -51,7 +51,7 @@ define({
       //color theme.
     "theme": "#137DB9",
     "applicationName": "Clark County Citizen Connect",
-    "applicationIcon": "/images/favicon.ico",
+    "applicationIcon": "/images/app-icon.ico",
     "applicationFavicon": "/images/favicon.ico",
 
     "signInSubtitle": "",
