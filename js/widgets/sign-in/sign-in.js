@@ -16,6 +16,43 @@
  | limitations under the License.
  */
 //============================================================================================================================//
+var AUTH0_CLIENT_ID = 'em74NlUTN51eQKIvEvBGgZ2jCbeln5nn'; // '32jVNGIKtcvvWnU6kMjs5VfIk90wjlg6';
+var AUTH0_DOMAIN = 'wideball.auth0.com';
+var AUTH0_CALLBACK_URL = window.location.href;
+
+var lock;
+
+var userDetails = { fullName: null, firstName: null, lastName: null, uniqueID: null, socialMediaType: null };
+var Auth0LoggedIn = false;
+var profile;
+var thisWidget;
+
+function auth0LoginHandler() {
+    // if user is already logged in
+    if (Auth0LoggedIn) {
+        //this.show_profile_info(profile);
+        if (Auth0LoggedIn) {
+            userDetails.fullName = profile.nickname || "";
+            userDetails.firstName = ""; //response.first_name;
+            userDetails.lastName = ""; //response.last_name;
+            userDetails.uniqueID = ""; //Type = "facebook";
+            //this.Auth0LogIn(this.userDetails);
+            return userDetails;
+
+        } else {
+            // Report not-logged-in state
+            userDetails = { fullName: null, firstName: null, lastName: null, uniqueID: null, socialMediaType: null };
+            //this.onAuth0LogOut(this.userDetails);
+            return userDetails;
+        }
+
+    } else {
+        lock.show();
+    }
+}
+
+
+
 define([
     "config/template-config",
     "application/template",
@@ -38,7 +75,7 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "esri/IdentityManager",
     "widgets/sign-in/facebook-helper",
-    "widgets/sign-in/twitter-helper",
+    "widgets/sign-in/twitter-helper",    
     "widgets/help/help",
     "dojo/query"
 
@@ -50,8 +87,8 @@ define([
         _helpScreen: null,
         isUserLoggedIn: false,
         fbHelperObject: null,
-        twHelperObject: null,
-
+        twHelperObject: null,       
+       
         /**
         * This function is called on startup of widget.
         * @param{object} config to be used
@@ -94,6 +131,35 @@ define([
                 this._handleEvents();
             }
             this._handleSplashScreenVisibility();
+
+            lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN); 
+            thisWidget = this;
+
+            lock.on("authenticated", function (authResult) {
+                lock.getProfile(authResult.idToken, function (error, profile) {
+                    if (error) {
+                        // Handle error
+                        return;
+                    }
+                    localStorage.setItem('id_token', authResult.idToken);
+                    // Display user information
+                    //this.show_profile_info(profile);
+                    Auth0LoggedIn = true;
+                    userDetails.fullName = profile.nickname || "";
+                    userDetails.firstName = ""; //response.first_name;
+                    userDetails.lastName = ""; //response.last_name;
+                    userDetails.uniqueID = profile.nickname || ""; //Type = "facebook";                    
+                    thisWidget.processUserDetails(userDetails);
+                    /*
+                    } else {
+                        // Report not-logged-in state
+                        userDetails = { fullName: null, firstName: null, lastName: null, uniqueID: null, socialMediaType: null };
+                        //this.onAuth0LogOut(this.userDetails);
+                        this.processUserDetails(userDetails);
+                    }*/
+
+                });
+            });
         },
 
         /**
@@ -354,12 +420,16 @@ define([
                 this.isUserLoggedIn = true;
             }
         },
-
         /**
         * This function is executed when user clicks on ESRI (AGOL login) button
         * @memberOf widgets/sign-in/sign-in
         */
         _esriButtonClicked: function () {
+
+            auth0LoginHandler();          
+           
+
+            /*
             var noMapMessage;
             this.hideSignInDialog();
             this.portal = new esriPortal.Portal(this._config.sharinghost);
@@ -397,7 +467,7 @@ define([
                         this.appUtils.showError(e.message);
                     }
                 });
-            }));
+            }));*/
         },
 
         /**

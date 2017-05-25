@@ -28,6 +28,11 @@
     <link rel="stylesheet" href="css/common.css" type="text/css" />
     <link rel="stylesheet" href="css/mediaqueries.css" type="text/css" />
     <link rel="stylesheet" href="css/font-icon-styles.css" type="text/css" />
+
+    <!-- Auth0 lock script -->
+    <!-- Needed to put this in the head section as it was not being recognized when put in the body -->
+    <script type="text/javascript" src="//cdn.auth0.com/js/lock/10.13/lock.min.js"></script> 
+
     <!-- Add Legacy browsers css -->
     <!--[if lt IE 9]>
     <link rel="stylesheet"  type="text/css" href="css/legacy-browsers.css" />
@@ -82,6 +87,7 @@
     <script type="text/javascript" src="js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="js/vendor/touch-spinner/jquery.bootstrap-touchspin.min.js"></script>
     <script type="text/javascript" src="//js.arcgis.com/3.20"></script>
+       
     <script type="text/javascript">
         require([
                 "application/bootstrapper"
@@ -90,7 +96,7 @@
             ) {
             var bootStrapperObj = new BootStrapper();
             bootStrapperObj.startup();
-        });
+        });        
     </script>
 </body>
 </html>

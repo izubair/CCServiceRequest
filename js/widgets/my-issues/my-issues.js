@@ -315,6 +315,8 @@ define([
             deferred = new Deferred();
             parameters = new Query();
             // query with configured reported by field to get list of issues reported by logged in user
+            //queryString = this.appConfig.reportedByField + "='" + this.appConfig.logInDetails.processedUserName + "' AND " + dateobj + "=" + dateobj;
+
             queryString = this.appConfig.reportedByField + "='" + this.appConfig.logInDetails.processedUserName + "' AND " + dateobj + "=" + dateobj;
 
             // add layer definition in query parameters if it is available in layer object

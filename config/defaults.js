@@ -62,7 +62,7 @@ define({
     "enableFacebook": true,
     "enableTwitter": true,
     "enableGoogleplus": true,
-    "enablePortalLogin": false,
+    "enablePortalLogin": true,
 
     "facebookAppId": "1202596886532414",
 
