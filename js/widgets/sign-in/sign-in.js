@@ -160,6 +160,16 @@ define([
 
                 });
             });
+
+            lock.on('authorization_error', function (error) {
+                var errorText = "VERIFICATION EMAIL SENT TO YOUR ACCOUNT. " + error.error_description;
+                lock.show({
+                    flashMessage: {
+                        type: 'error',
+                        text: errorText
+                    }
+                });
+            });
         },
 
         /**
